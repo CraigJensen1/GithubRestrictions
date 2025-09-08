@@ -1,3 +1,29 @@
-﻿using System;
-class pl { public void adds(string n) { Console.WriteLine("Added: " + n); } }
-class program { static void Main() { pl p = new pl();p.adds("Song A"); } }
+﻿//ALL_CAPS
+//Avoid Abbreviation always (almost)
+//Avoid vague variable names
+//PascalCase = Methods, Classes, etc.
+//camelCase = variables
+using System;
+class Playlist
+{
+    public const decimal UTAH_TAX_CODE = 343.343m;
+    public void AddSong(string name)
+    {
+        Console.WriteLine("Added: " + name);
+        if (true)
+        {
+            Console.WriteLine("indent");
+        }
+    }
+
+}
+
+class Program
+{
+    static void Main()
+    {
+        Playlist playlist = new Playlist();
+        playlist.AddSong("Song A");
+    }
+
+}
