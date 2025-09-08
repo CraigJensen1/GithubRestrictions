@@ -1,3 +1,21 @@
 ﻿using System;
-class pl { public void adds(string n) { Console.WriteLine("Added: " + n); } }
-class program { static void Main() { pl p = new pl();p.adds("Song A"); } }
+class Playlist
+{
+    public const decimal UTAH_TAX_CODE = 343.343m;
+    
+    public void ThisIsAddingSong(string n)
+    {
+        Console.WriteLine("Added: " + n);
+        if (true)
+        {
+            System.Console.WriteLine("Indent");
+        }
+    }
+}
+class program
+{
+    static void Main()
+    {
+        Playlist playlist = new Playlist(); playlist.ThisIsAddingSong("Song A");
+    }
+}
