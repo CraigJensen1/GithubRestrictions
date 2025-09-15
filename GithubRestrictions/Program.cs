@@ -92,7 +92,7 @@ namespace BadCode
             {
                 for (int i = 0; i < userNames.Count; i++)
                 {
-                    Console.WriteLine("User again: " + userNames[i] + " / " + ages[i] + " / " + emails[i]);
+                    Console.WriteLine("User again: " + userNames[i] + " / " + ages[i] + " / " + emails[i]); 
                 }
             }
             else if (answer == "NO")
