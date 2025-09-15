@@ -98,7 +98,7 @@ namespace BadCode
             else if (answer == "NO")
             {
                 Console.WriteLine("ok bye lol");
-            }
+            } 
             else
             {
                 Console.WriteLine("idk what you mean but bye");
