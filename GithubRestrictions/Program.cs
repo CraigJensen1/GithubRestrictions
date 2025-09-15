@@ -8,7 +8,7 @@ namespace BadCode
         static void Main(string[] args)
         {
             Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
-            Console.WriteLine("Please enter how many users you want to add?");
+            Console.WriteLine("Please enter how many users you want to add?"); 
             string name = Console.ReadLine();
             int age = 0;
             try
