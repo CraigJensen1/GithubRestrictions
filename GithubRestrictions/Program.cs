@@ -9,7 +9,7 @@ namespace BadCode
         {
             Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
             Console.WriteLine("Please enter how many users you want to add?");
-            string n = Console.ReadLine();
+            string number = Console.ReadLine();
             int x = 0;
             try
             {
