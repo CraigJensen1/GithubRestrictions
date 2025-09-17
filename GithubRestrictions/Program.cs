@@ -33,32 +33,15 @@ namespace BadCode
 
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
             var ans = Console.ReadLine();
-            if (ans == "YES")
-            {
-                for (int i = 0; i < usernames.Count; i++)
-                {
-                    Console.WriteLine("User again: " + usernames[i] + " / " + ages[i] + " / " + emails[i]);
-                }
-            }
-            else if (ans == "NO")
-            {
-                Console.WriteLine("ok bye lol");
-            }
-            else
-            {
-                Console.WriteLine("idk what you mean but bye");
-            }
+
+            Users.DisplayAllUsers(usernames, ages, emails, ans);
 
             Console.WriteLine("press enter to exit");
             Console.ReadLine();
         }
 
-
-
-
-
-
-
+      
+        }
     }
 
 
@@ -133,6 +116,23 @@ namespace BadCode
                     Console.WriteLine("Name length is good enough I guess");
                 }
             }
+        }
+    internal static void DisplayAllUsers(List<string> usernames, List<int> ages, List<string> emails, string? ans)
+    {
+        if (ans == "YES")
+        {
+            for (int i = 0; i < usernames.Count; i++)
+            {
+                Console.WriteLine("User again: " + usernames[i] + " / " + ages[i] + " / " + emails[i]);
+            }
+        }
+        else if (ans == "NO")
+        {
+            Console.WriteLine("ok bye lol");
+        }
+        else
+        {
+            Console.WriteLine("idk what you mean but bye");
         }
 
     }
