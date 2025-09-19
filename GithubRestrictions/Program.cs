@@ -3,33 +3,38 @@ using System.Collections.Generic;
 
 namespace BadCode
 {
-    class pRoGrAm
+    class Program
     {
+        public const int ADULT_AGE = 18;
+        public const int OLD_AGE = 60;
         static void Main(string[] args)
         {
             Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
+            public static int GetNumOfUsers()
+            {
             Console.WriteLine("Please enter how many users you want to add?");
-            string n = Console.ReadLine();
-            int x = 0;
-            try
-            {
-                x = Convert.ToInt32(n);
-            }
-            catch
-            {
-                Console.WriteLine("invalid input, defaulting to 2");
-                x = 2;
+            string UserInput= Console.ReadLine();
+            int NumberOfCLients = 0;
+                try
+                {
+                    return Convert.ToInt32(input);
+                }
+                catch
+                {
+                    Console.WriteLine("invalid input, try again");
+                    return GetNumOfUsers();
+                }
             }
 
             List<string> usernames = new List<string>();
             List<int> ages = new List<int>();
             List<string> emails = new List<string>();
 
-            for (int i = 0; i < x; i++)
+            for (int i = 0; i < NumberOfCLients; i++)
             {
                 Console.WriteLine("Enter name:");
-                string nm = Console.ReadLine();
-                usernames.Add(nm);
+                string UserName = Console.ReadLine();
+                usernames.Add(UserName);
 
                 Console.WriteLine("Enter age:");
                 string ag = Console.ReadLine();
@@ -44,11 +49,11 @@ namespace BadCode
             {
                 Console.WriteLine("USER " + (q + 1) + ":");
                 Console.WriteLine("NAME=" + usernames[q] + ", age is " + ages[q] + ", EMAIL: " + emails[q]);
-                if (ages[q] < 18)
+                if (ages[q] < ADULT_AGE)
                 {
                     Console.WriteLine("This person is underaged!!!");
                 }
-                else if (ages[q] > 60)
+                else if (ages[q] > OLD_AGE)
                 {
                     Console.WriteLine("This person is OLD!!!");
                 }
@@ -80,6 +85,7 @@ namespace BadCode
 
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
             var ans = Console.ReadLine();
+            ans = ans.ToUpper();
             if (ans == "YES")
             {
                 for (int i = 0; i < usernames.Count; i++)
