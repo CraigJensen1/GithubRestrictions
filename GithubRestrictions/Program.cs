@@ -3,52 +3,52 @@ using System.Collections.Generic;
 
 namespace BadCode
 {
-    class pRoGrAm
+    class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
             Console.WriteLine("Please enter how many users you want to add?");
-            string n = Console.ReadLine();
-            int x = 0;
+            string numberOfUsersString = Console.ReadLine();
+            int numberOfUsers = 0;
             try
             {
-                x = Convert.ToInt32(n);
+                numberOfUsers = Convert.ToInt32(numberOfUsersString);
             }
             catch
             {
                 Console.WriteLine("invalid input, defaulting to 2");
-                x = 2;
+                numberOfUsers = 2;
             }
 
             List<string> usernames = new List<string>();
             List<int> ages = new List<int>();
             List<string> emails = new List<string>();
 
-            for (int i = 0; i < x; i++)
+            for (int playerNumber = 0; playerNumber < numberOfUsers; playerNumber++)
             {
                 Console.WriteLine("Enter name:");
-                string nm = Console.ReadLine();
-                usernames.Add(nm);
+                string username = Console.ReadLine();
+                usernames.Add(username);
 
                 Console.WriteLine("Enter age:");
-                string ag = Console.ReadLine();
-                ages.Add(Int32.Parse(ag));
+                string age = Console.ReadLine();
+                ages.Add(Int32.Parse(age));
 
                 Console.WriteLine("Enter email:");
-                string e = Console.ReadLine();
-                emails.Add(e);
+                string email = Console.ReadLine();
+                emails.Add(email);
             }
 
-            for (int q = 0; q < usernames.Count; q++)
+            for (int index = 0; index < usernames.Count; index++)
             {
-                Console.WriteLine("USER " + (q + 1) + ":");
-                Console.WriteLine("NAME=" + usernames[q] + ", age is " + ages[q] + ", EMAIL: " + emails[q]);
-                if (ages[q] < 18)
+                Console.WriteLine("USER " + (index + 1) + ":");
+                Console.WriteLine("NAME=" + usernames[index] + ", age is " + ages[index] + ", EMAIL: " + emails[index]);
+                if (ages[index] < 18)
                 {
                     Console.WriteLine("This person is underaged!!!");
                 }
-                else if (ages[q] > 60)
+                else if (ages[index] > 60)
                 {
                     Console.WriteLine("This person is OLD!!!");
                 }
@@ -56,21 +56,21 @@ namespace BadCode
                 {
                     Console.WriteLine("This person is fine I guess");
                 }
-                if (emails[q].Contains("@") == false)
+                if (emails[index].Contains("@") == false)
                 {
                     Console.WriteLine("Not a valid email but who cares");
                 }
             }
 
-            for (int q = 0; q < usernames.Count; q++)
+            for (int index = 0; index < usernames.Count; index++)
             {
-                if (usernames[q].Length > 10)
+                if (usernames[index].Length > 10)
                 {
-                    Console.WriteLine(usernames[q] + " has a long name");
+                    Console.WriteLine(usernames[index] + " has a long name");
                 }
-                else if (usernames[q].Length < 3)
+                else if (usernames[index].Length < 3)
                 {
-                    Console.WriteLine("shorty name alert: " + usernames[q]);
+                    Console.WriteLine("shorty name alert: " + usernames[index]);
                 }
                 else
                 {
@@ -79,15 +79,15 @@ namespace BadCode
             }
 
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
-            var ans = Console.ReadLine();
-            if (ans == "YES")
+            var userResponse = Console.ReadLine();
+            if (userResponse == "YES")
             {
-                for (int i = 0; i < usernames.Count; i++)
+                for (int index = 0; index < usernames.Count; index++)
                 {
-                    Console.WriteLine("User again: " + usernames[i] + " / " + ages[i] + " / " + emails[i]);
+                    Console.WriteLine("User again: " + usernames[index] + " / " + ages[index] + " / " + emails[index]);
                 }
             }
-            else if (ans == "NO")
+            else if (userResponse == "NO")
             {
                 Console.WriteLine("ok bye lol");
             }
