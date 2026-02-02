@@ -1,28 +1,29 @@
 ﻿namespace BadCode
 {
-    class pRoGrAm
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
-            Console.WriteLine("Please enter how many users you want to add?");
-            string n = Console.ReadLine();
-            int x = 0;
-            try
-            {
-                x = Convert.ToInt32(n);
-            }
-            catch
-            {
-                Console.WriteLine("invalid input, defaulting to 2");
-                x = 2;
-            }
-
             List<string> usernames = new List<string>();
             List<int> ages = new List<int>();
             List<string> emails = new List<string>();
 
-            for (int i = 0; i < x; i++)
+            Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
+            Console.WriteLine("Please enter how many users you want to add?");
+            string n = Console.ReadLine();
+            int numberOfUsers;
+            try
+            {
+                numberOfUsers = Convert.ToInt32(n);
+            }
+            catch
+            {
+                Console.WriteLine("invalid input, defaulting to 2");
+                numberOfUsers  = 2;
+            }
+
+
+            for (int i = 0; i < numberOfUsers; i++)
             {
                 Console.WriteLine("Enter name:");
                 string nm = Console.ReadLine();
