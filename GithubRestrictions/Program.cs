@@ -2,99 +2,120 @@
 {
     class pRoGrAm
     {
+        class User(string name, int age, string email)
+        {
+            public string Name = name;
+            public int Age = age;
+            public string Email = email;
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
             Console.WriteLine("Please enter how many users you want to add?");
-            string n = Console.ReadLine();
-            int x = 0;
+            string usersAmountString = Console.ReadLine();
+            int usersAmount = 0;
             try
             {
-                x = Convert.ToInt32(n);
+                usersAmount = Convert.ToInt32(usersAmountString);
             }
             catch
             {
                 Console.WriteLine("invalid input, defaulting to 2");
-                x = 2;
+                usersAmount = 2;
             }
 
-            List<string> usernames = new List<string>();
-            List<int> ages = new List<int>();
-            List<string> emails = new List<string>();
+            List<User> users = [];
 
-            for (int i = 0; i < x; i++)
+            for (int index = 0; index < usersAmount; index++)
             {
                 Console.WriteLine("Enter name:");
-                string nm = Console.ReadLine();
-                usernames.Add(nm);
-
+                string name = Console.ReadLine();
                 Console.WriteLine("Enter age:");
-                string ag = Console.ReadLine();
-                ages.Add(Int32.Parse(ag));
-
+                string age = Console.ReadLine();
                 Console.WriteLine("Enter email:");
-                string e = Console.ReadLine();
-                emails.Add(e);
+                string email = Console.ReadLine();
+
+                users.Add(new User(name, Int32.Parse(age), email));
             }
 
-            for (int q = 0; q < usernames.Count; q++)
+            for (int index = 0; index < usersAmount; index++)
             {
-                Console.WriteLine("USER " + (q + 1) + ":");
-                Console.WriteLine("NAME=" + usernames[q] + ", age is " + ages[q] + ", EMAIL: " + emails[q]);
-                if (ages[q] < 18)
-                {
-                    Console.WriteLine("This person is underaged!!!");
-                }
-                else if (ages[q] > 60)
-                {
-                    Console.WriteLine("This person is OLD!!!");
-                }
-                else
-                {
-                    Console.WriteLine("This person is fine I guess");
-                }
-                if (emails[q].Contains("@") == false)
-                {
-                    Console.WriteLine("Not a valid email but who cares");
-                }
+                User user = users[index];
+                Console.WriteLine("USER " + (index + 1) + ":");
+                Console.WriteLine("NAME=" + user.Name + ", age is " + user.Age + ", EMAIL: " + user.Email);
+                evaluateAge(user.Age);
+                evaluateEmail(user.Email);
             }
 
-            for (int q = 0; q < usernames.Count; q++)
+            foreach (var user in users)
             {
-                if (usernames[q].Length > 10)
-                {
-                    Console.WriteLine(usernames[q] + " has a long name");
-                }
-                else if (usernames[q].Length < 3)
-                {
-                    Console.WriteLine("shorty name alert: " + usernames[q]);
-                }
-                else
-                {
-                    Console.WriteLine("Name length is good enough I guess");
-                }
+                evaluateName(user.Name);
             }
 
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
-            var ans = Console.ReadLine();
-            if (ans == "YES")
+            string userResponse = Console.ReadLine();
+            switch (userResponse)
             {
-                for (int i = 0; i < usernames.Count; i++)
-                {
-                    Console.WriteLine("User again: " + usernames[i] + " / " + ages[i] + " / " + emails[i]);
-                }
+                case "YES":
+                    foreach (var user in users)
+                    {
+                        Console.WriteLine("User again: " + user.Name + " / " + user.Age + " / " + user.Email);
+                    }
+                    break;
+                case "NO":
+                    Console.WriteLine("ok bye lol");
+                    break;
+                default:
+                    Console.WriteLine("idk what you mean but bye");
+                    break;
             }
-            else if (ans == "NO")
+            Console.WriteLine("press enter to exit");
+            Console.ReadLine();
+        }
+
+        static void evaluateName(string name)
+        {
+            const int highNameLength = 10;
+            const int lowNameLength = 3;
+            if (name.Length > highNameLength)
             {
-                Console.WriteLine("ok bye lol");
+                Console.WriteLine(name + " has a long name");
+            }
+            else if (name.Length < lowNameLength)
+            {
+                Console.WriteLine("shorty name alert: " + name);
             }
             else
             {
-                Console.WriteLine("idk what you mean but bye");
+                Console.WriteLine("Name length is good enough I guess");
             }
+        }
 
-            Console.WriteLine("press enter to exit");
-            Console.ReadLine();
+        static void evaluateEmail(string email)
+        {
+            if (email.Contains("@") == false)
+            {
+                Console.WriteLine("Not a valid email but who cares");
+            }
+        }
+
+        static void evaluateAge(int age)
+        {
+            const int lowAgeLimit = 18;
+            const int highAgeLimit = 60;
+            if (age < lowAgeLimit)
+            {
+                Console.WriteLine("This person is underaged!!!");
+            }
+            else if (age > highAgeLimit)
+            {
+                Console.WriteLine("This person is OLD!!!");
+            }
+            else
+            {
+                Console.WriteLine("This person is fine I guess");
+            }
         }
     }
 }
