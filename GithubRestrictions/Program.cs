@@ -2,6 +2,9 @@
 {
     class Program
     {
+        private const int Underage = 18;
+        private const int Old = 60;
+
         static void Main(string[] args)
         {
             List<string> usernames = new List<string>();
@@ -19,7 +22,7 @@
             catch
             {
                 Console.WriteLine("invalid input, defaulting to 2");
-                numberOfUsers  = 2;
+                numberOfUsers = 2;
             }
 
 
@@ -42,40 +45,19 @@
             {
                 Console.WriteLine("USER " + (q + 1) + ":");
                 Console.WriteLine("NAME=" + usernames[q] + ", age is " + ages[q] + ", EMAIL: " + emails[q]);
-                if (ages[q] < 18)
-                {
-                    Console.WriteLine("This person is underaged!!!");
-                }
-                else if (ages[q] > 60)
-                {
-                    Console.WriteLine("This person is OLD!!!");
-                }
-                else
-                {
-                    Console.WriteLine("This person is fine I guess");
-                }
-                if (emails[q].Contains("@") == false)
-                {
-                    Console.WriteLine("Not a valid email but who cares");
-                }
+                CheckAge(ages, q);
+                CheckEmail(emails, q);
+                CheckUsernameLength(usernames, q);
             }
 
-            for (int q = 0; q < usernames.Count; q++)
-            {
-                if (usernames[q].Length > 10)
-                {
-                    Console.WriteLine(usernames[q] + " has a long name");
-                }
-                else if (usernames[q].Length < 3)
-                {
-                    Console.WriteLine("shorty name alert: " + usernames[q]);
-                }
-                else
-                {
-                    Console.WriteLine("Name length is good enough I guess");
-                }
-            }
+            RewriteEverything(usernames, ages, emails);
 
+            Console.WriteLine("press enter to exit");
+            Console.ReadLine();
+        }
+
+        private static void RewriteEverything(List<string> usernames, List<int> ages, List<string> emails)
+        {
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
             var ans = Console.ReadLine();
             if (ans == "YES")
@@ -93,9 +75,46 @@
             {
                 Console.WriteLine("idk what you mean but bye");
             }
+        }
 
-            Console.WriteLine("press enter to exit");
-            Console.ReadLine();
+        private static void CheckEmail(List<string> emails, int q)
+        {
+            if (emails[q].Contains("@") == false)
+            {
+                Console.WriteLine("Not a valid email but who cares");
+            }
+        }
+
+        private static void CheckAge(List<int> ages, int q)
+        {
+            if (ages[q] < Underage)
+            {
+                Console.WriteLine("This person is underaged!!!");
+            }
+            else if (ages[q] > Old)
+            {
+                Console.WriteLine("This person is OLD!!!");
+            }
+            else
+            {
+                Console.WriteLine("This person is fine I guess");
+            }
+        }
+
+        private static void CheckUsernameLength(List<string> usernames, int q)
+        {
+            if (usernames[q].Length > 10)
+            {
+                Console.WriteLine(usernames[q] + " has a long name");
+            }
+            else if (usernames[q].Length < 3)
+            {
+                Console.WriteLine("shorty name alert: " + usernames[q]);
+            }
+            else
+            {
+                Console.WriteLine("Name length is good enough I guess");
+            }
         }
     }
 }
