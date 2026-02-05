@@ -1,13 +1,18 @@
 ﻿namespace BadCode
 {
-    class pRoGrAm
+    class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            List<string> usernames = new List<string>();
+            List<int> ages = new List<int>();
+            List<string> emails = new List<string>();
+            int x = 0;
+
             Console.WriteLine("WELCOME TO THE SUPER COOL APP!!!");
             Console.WriteLine("Please enter how many users you want to add?");
             string n = Console.ReadLine();
-            int x = 0;
+            
             try
             {
                 x = Convert.ToInt32(n);
@@ -17,10 +22,6 @@
                 Console.WriteLine("invalid input, defaulting to 2");
                 x = 2;
             }
-
-            List<string> usernames = new List<string>();
-            List<int> ages = new List<int>();
-            List<string> emails = new List<string>();
 
             for (int i = 0; i < x; i++)
             {
@@ -41,6 +42,7 @@
             {
                 Console.WriteLine("USER " + (q + 1) + ":");
                 Console.WriteLine("NAME=" + usernames[q] + ", age is " + ages[q] + ", EMAIL: " + emails[q]);
+                
                 if (ages[q] < 18)
                 {
                     Console.WriteLine("This person is underaged!!!");
@@ -53,6 +55,7 @@
                 {
                     Console.WriteLine("This person is fine I guess");
                 }
+
                 if (emails[q].Contains("@") == false)
                 {
                     Console.WriteLine("Not a valid email but who cares");
@@ -77,6 +80,7 @@
 
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
             var ans = Console.ReadLine();
+            
             if (ans == "YES")
             {
                 for (int i = 0; i < usernames.Count; i++)
