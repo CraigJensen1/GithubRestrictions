@@ -1,6 +1,7 @@
-﻿using UserData;
+﻿using ProcessUserData;
+using UserData;
 using static System.Console;
-using static ProcessUserData.UserMethods;
+using static ProcessUserData.UserDataProcessing;
 
 namespace BadCode
 {
@@ -9,7 +10,7 @@ namespace BadCode
         static void Main(string[] args)
         {
             WelcomeMessage();
-            int userCount = DetermineUserCount();
+            int userCount = DetermineUserCount(ReadLine());
 
             AddUsers(userCount);
 

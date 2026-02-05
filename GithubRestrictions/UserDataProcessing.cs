@@ -3,14 +3,10 @@ using static System.Console;
 
 namespace ProcessUserData
 {
-    public class UserMethods
+    public class UserDataProcessing
     {
         public static List<User> Users { get; set; } = new List<User>();
         const int DEFAULT_USER_COUNT = 2;
-        const int ADULT_AGE = 18;
-        const int OLD_AGE = 60;
-        const int LONG_NAME_LENGTH = 10;
-        const int SHORT_NAME_LENGTH = 3;
 
         internal static void WelcomeMessage()
         {
@@ -18,12 +14,12 @@ namespace ProcessUserData
             WriteLine("Please enter how many users you want to add?");
         }
 
-        internal static int DetermineUserCount()
+        internal static int DetermineUserCount(string input)
         {
             int userCount;
             try
             {
-                userCount = Convert.ToInt32(ReadLine());
+                userCount = Convert.ToInt32(input);
             }
             catch
             {
@@ -53,54 +49,14 @@ namespace ProcessUserData
         {
             for (int q = 0; q < Users.Count; q++)
             {
-                WriteLine($"USER {(q + 1)}:");
+                WriteLine($"USER {q + 1}:");
                 WriteLine($"NAME={Users[q].Name}, age is {Users[q].Age}, EMAIL: {Users[q].Email}");
-                ProcessAge(q);
-                ProcessEmail(q);
+                Users[q].EvaluateAge();
+                Users[q].ValidateEmail();
             }
-            ProcessNames();
-        }
-
-        private static void ProcessNames()
-        {
             for (int q = 0; q < Users.Count; q++)
             {
-                if (Users[q].Name.Length > LONG_NAME_LENGTH)
-                {
-                    WriteLine($"{Users[q].Name} has a long name");
-                }
-                else if (Users[q].Name.Length < SHORT_NAME_LENGTH)
-                {
-                    WriteLine($"shorty name alert: {Users[q].Name}");
-                }
-                else
-                {
-                    WriteLine("Name length is good enough I guess");
-                }
-            }
-        }
-
-        private static void ProcessEmail(int q)
-        {
-            if (!Users[q].Email.Contains("@"))
-            {
-                WriteLine("Not a valid email but who cares");
-            }
-        }
-
-        private static void ProcessAge(int q)
-        {
-            if (Users[q].Age < ADULT_AGE)
-            {
-                WriteLine("This person is underaged!!!");
-            }
-            else if (Users[q].Age > OLD_AGE)
-            {
-                WriteLine("This person is OLD!!!");
-            }
-            else
-            {
-                WriteLine("This person is fine I guess");
+                Users[q].EvaluateNameLength();
             }
         }
         internal static void SeeAllUsersAgain(string? ans)
