@@ -18,41 +18,42 @@ namespace UserData
             Age = age;
             Email = email;
         }
-        internal void EvaluateAge()
+        internal string EvaluateAge()
         {
             if (Age < ADULT_AGE)
             {
-                WriteLine("This person is underaged!!!");
+                return "This person is underaged!!!";
             }
             else if (Age > OLD_AGE)
             {
-                WriteLine("This person is OLD!!!");
+                return "This person is OLD!!!";
             }
             else
             {
-                WriteLine("This person is fine I guess");
+                return "This person is fine I guess";
             }
         }
-        internal void ValidateEmail()
+        internal string ValidateEmail()
         {
             if (!Email.Contains("@"))
             {
-                WriteLine("Not a valid email but who cares");
+                return "Not a valid email but who cares";
             }
+            return "";
         }
-        internal void EvaluateNameLength()
+        internal string EvaluateNameLength()
         {
             if (Name.Length > LONG_NAME_LENGTH)
             {
-                WriteLine($"{Name} has a long name");
+                return $"{Name} has a long name";
             }
             else if (Name.Length < SHORT_NAME_LENGTH)
             {
-                WriteLine($"shorty name alert: {Name}");
+                return $"shorty name alert: {Name}";
             }
             else
             {
-                WriteLine("Name length is good enough I guess");
+                return "Name length is good enough I guess";
             }
         }
     }

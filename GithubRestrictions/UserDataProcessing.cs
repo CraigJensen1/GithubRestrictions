@@ -51,12 +51,12 @@ namespace ProcessUserData
             {
                 WriteLine($"USER {q + 1}:");
                 WriteLine($"NAME={Users[q].Name}, age is {Users[q].Age}, EMAIL: {Users[q].Email}");
-                Users[q].EvaluateAge();
-                Users[q].ValidateEmail();
+                WriteLine(Users[q].EvaluateAge());
+                WriteLine(Users[q].ValidateEmail());
             }
             for (int q = 0; q < Users.Count; q++)
             {
-                Users[q].EvaluateNameLength();
+                WriteLine(Users[q].EvaluateNameLength());
             }
         }
         internal static void SeeAllUsersAgain(string? ans)
