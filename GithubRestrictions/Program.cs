@@ -4,14 +4,17 @@
     {
         
         const int LowerAgeLimit = 18;
-
         const int UpperAgeLimit = 60;
-
         const int UsernameUpperLengthLimit = 10;
-
         const int UsernameLowerLengthLimit = 3;
+        private const int InvalidAmountOfUsersInput = 2;
 
         static void Main(string[] args)
+        {
+            RunProgram();
+        }
+
+        private static void RunProgram()
         {
             int parsedNumberOfUsers = GetNumberOfUsers();
 
@@ -25,14 +28,19 @@
 
             DisplayUsernameLength(usernames);
 
+            AskToDisplayUsersAgain(usernames, ages, emails);
+
+            Console.WriteLine("press enter to exit");
+            Console.ReadLine();
+        }
+
+        private static void AskToDisplayUsersAgain(List<string> usernames, List<int> ages, List<string> emails)
+        {
             Console.WriteLine("Do you want to see all users again??? type YES or NO");
             var userResponse = Console.ReadLine();
             if (userResponse == "YES")
             {
-                for (int index = 0; index < usernames.Count; index++)
-                {
-                    Console.WriteLine("User again: " + usernames[index] + " / " + ages[index] + " / " + emails[index]);
-                }
+                DisplayUsersAgain(usernames, ages, emails);
             }
             else if (userResponse == "NO")
             {
@@ -42,22 +50,28 @@
             {
                 Console.WriteLine("idk what you mean but bye");
             }
+        }
 
-            Console.WriteLine("press enter to exit");
-            Console.ReadLine();
+        private static void DisplayUsersAgain(List<string> usernames, List<int> ages, List<string> emails)
+        {
+            for (int index = 0; index < usernames.Count; index++)
+            {
+                Console.WriteLine("User again: " + usernames[index] + " / " + ages[index] + " / " + emails[index]);
+            }
         }
 
         private static void DisplayUsernameLength(List<string> usernames)
         {
-            for (int q = 0; q < usernames.Count; q++)
+            for (int index = 0; index < usernames.Count; index++)
             {
-                if (usernames[q].Length > UsernameUpperLengthLimit)
+                string username = usernames[index];
+                if (username.Length > UsernameUpperLengthLimit)
                 {
-                    Console.WriteLine(usernames[q] + " has a long name");
+                    Console.WriteLine(username + " has a long name");
                 }
-                else if (usernames[q].Length < UsernameLowerLengthLimit)
+                else if (username.Length < UsernameLowerLengthLimit)
                 {
-                    Console.WriteLine("shorty name alert: " + usernames[q]);
+                    Console.WriteLine("shorty name alert: " + username);
                 }
                 else
                 {
@@ -120,7 +134,7 @@
             catch
             {
                 Console.WriteLine("invalid input, defaulting to 2");
-                parsedNumberOfUsers = 2;
+                parsedNumberOfUsers = InvalidAmountOfUsersInput;
             }
 
             return parsedNumberOfUsers;
